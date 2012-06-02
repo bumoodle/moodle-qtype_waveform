@@ -8,11 +8,13 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
 $string['addingwaveform'] = 'Adding a Logic Timing Diagram question';
 $string['editingwaveform'] = 'Editing a Logic Timing Diagram question';
 $string['waveform_link'] = 'question/type/waveform';
 
 $string['waveform'] = 'Logic Timing Diagram';
+$string['pluginname'] = 'Logic Timing Diagram';
 $string['waveform_help'] = 'In response to a question (which may contain an image) and a waveform prompt, the respondent fills in blanks in the waveform prompt.';
 $string['waveformsummary'] = 'An automatically-graded timing diagram quesiton for Digital Logic elements.';
 
@@ -37,4 +39,4 @@ $string['generateclock'] = 'Generate Clock:';
 $string['time_high'] = 'Time High:';
 $string['time_low'] = 'Time Low:';
 
-$string['mayhavechanged'] = '<em>Note:</em> Your answer may have changed since this feedback was provided.'
+$string['mayhavechanged'] = '<em>Note:</em> Your answer may have changed since this feedback was provided.';
