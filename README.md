@@ -1,4 +1,5 @@
 Logic Waveform (timing diagram) question type for Moodle 2.1+
+
 Allows the student to answer a question which is presented, and answered, via timing diagram-style waveforms
 
 Authored by Kyle Temkin, working for Binghamton University <http://www.binghamton.edu>
