@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMLDB PATH="question/type/match/db" VERSION="20100721"
+	COMMENT="XMLDB file for Moodle question/type/match" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd">
+	<TABLES>
+<TABLE NAME="question_waveform" COMMENT="question_waveform table retrofitted from MySQL">
+<FIELDS>
+<FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" UNSIGNED="true" SEQUENCE="true" NEXT="question"/>
+<FIELD NAME="question" TYPE="int" LENGTH="11" NOTNULL="true" UNSIGNED="false" SEQUENCE="false" PREVIOUS="id" NEXT="wave"/>
+<FIELD NAME="wave" TYPE="text" LENGTH="small" NOTNULL="true" SEQUENCE="false" PREVIOUS="question" NEXT="allowunknown"/>
+<FIELD NAME="allowunknown" TYPE="int" LENGTH="1" NOTNULL="false" UNSIGNED="false" SEQUENCE="false" PREVIOUS="wave" NEXT="autofeedback"/>
+<FIELD NAME="autofeedback" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" PREVIOUS="allowunknown" NEXT="grademethod"/>
+<FIELD NAME="grademethod" TYPE="text" LENGTH="small" NOTNULL="false" SEQUENCE="false" PREVIOUS="autofeedback"/>
+</FIELDS>
+<KEYS>
+<KEY NAME="id" TYPE="primary" FIELDS="id"/>
+</KEYS>
+</TABLE>
+	</TABLES>
+</XMLDB>

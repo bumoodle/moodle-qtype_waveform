@@ -1,0 +1,379 @@
+@CHARSET "UTF-8";
+
+.wfDynamic {
+	position: relative;
+	left: -85px;
+	clear: left;
+}
+
+.wfQuickform {
+	min-width: 700px !important;
+	
+	/* overflow: auto; */
+	overflow-y: visible;
+	overflow-x: auto;
+
+	/* hack for small screens */
+	margin-left: -100px; 	
+
+	padding-bottom: 65px; /* for popups */
+	
+	/* prevent selection of wave elements */
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+.wavecontainer {
+	min-height: 35px;
+	
+	margin-top: 5px !important;
+	overflow-x : visible;
+	
+	width: 100% !important;
+}
+
+.wavecontainer input {
+	width: 75px;
+	border: none;
+	border-bottom: 1px dotted #ccc;
+	background-color: inherit;
+	text-align: right;
+}
+
+.wavecontainer input:hover {
+	background-color: white;
+	border: 1px solid #000 !important;
+}
+
+.wavename {
+	float: left;
+	margin-right: 10px;
+	padding-top: 7px;
+	text-align: center;
+	min-width: 70px;
+	font-family: sans-serif;
+	font-size: 10pt;
+}
+
+.redundant {
+	display: none;
+}
+
+.wavecell {
+	width: 15px;
+	height: 30px;
+	background-color: #fff;
+	
+	/* graph paper grid color */
+	border: 1px dotted #cfcfcf;
+	border-right: none;
+	border-left: none;
+	float: left;
+}
+
+.wavecell:hover {
+	background-color: #EDFCFC;
+}
+
+.wfParallel {
+	background-color: #E3FAFA;
+	border-left: 1px dotted #f00;
+}
+
+.activeedge {
+	border-left: 1px dotted #fcc;
+}
+
+.jointbottom,.jointtop,.jointmiddle {
+	position: relative;
+	width: 3px !important;
+	max-width: 3px !important;
+	height: 3px !important;
+	max-height: 3px !important;
+	line-height: 0px;
+	display: none;
+	background-color: #229ED4;
+}
+
+.timerule {
+	position: relative;
+	width: 2px !important;
+	max-width: 2px !important;
+	height: 28px !important;
+	max-height: 28px !important;
+	line-height: 0px;
+	border-right: 1px dotted #d9d9d9;
+	background: none;
+	top: 1px;
+	left: 14px;
+}
+
+.jointbottom {
+	top: 29px;
+	*top: 27px;
+	left: -2px;
+}
+
+.jointtop {
+	top: -3px;
+	left: -2px;
+}
+
+.jointmiddle {
+	top: 14px;
+	left: -2px;
+}
+
+.one,.unknown {
+	border-top: 2px solid #54CBFF;
+}
+
+.fixedone,.fixedunknown {
+	border-top: 2px solid #000;
+}
+
+.autoone,.autounknown {
+	border-top: 2px solid #54CBFF;
+}
+
+.zero,.unknown {
+	border-bottom: 2px solid #54CBFF;
+}
+
+.fixedzero,.fixedunknown {
+	border-bottom: 2px solid #000;
+}
+
+.autozero,.autounknown {
+	border-bottom: 2px solid #54CBFF;
+}
+
+.transition {
+	border-left: 2px solid #54CBFF;
+	width: 13px;
+}
+
+.autotransition {
+	border-left: 2px solid #54CBFF;
+	width: 13px;
+}
+
+.fixedtransition {
+	border-left: 2px solid #000;
+	width: 13px;
+}
+
+.unknown {
+	background-image: url('../pix/auto_unknown.png');
+}
+
+.modUnknown,#btnUnknown {
+	background-image: url('../pix/modUnknown2.png');
+}
+
+.autounknown {
+	background-image: url('../pix/auto_unknown.png');
+}
+
+.fixedunknown {
+	background-image: url('../pix/fixed_unknown.png');
+}
+
+#modSelect {
+	background-image: url('../pix/select.png');
+}
+
+#btnHigh {
+	background-image: url('../pix/force_one.png');
+}
+
+#btnLow {
+	background-image: url('../pix/force_zero.png');
+}
+
+.modDelete,#btnDelete {
+	background-image: url('../pix/delete.png');
+}
+
+.btnReset {
+	background-image: url('../pix/reset.png');
+}
+
+.modNormal {
+	background-image: url('../pix/addpoints.png');
+}
+
+#modLock,#btnLock {
+	background-image: url('../pix/locked.png');
+}
+
+#modUnlock,#btnUnlock {
+	background-image: url('../pix/unlocked.png');
+}
+
+.btnHelp {
+	background-image: url('../pix/help.png');
+}
+
+#btnClock {
+	background-image: url('../pix/clock.gif');
+}
+
+#btnAddWave {
+	background-image: url('../pix/addwave.png');
+}
+
+#modRemoveWave {
+	background-image: url('../pix/delwave.png');
+}
+
+#btnSetDuration {
+	background-image: url('../pix/duration.png');
+}
+
+#btnCancelSelect, #btnDurationCancel, #btnClockCancel {
+	background-image: url('../pix/cancel.png');
+}
+
+#btnDurationOk, #btnClockOk {
+	background-image: url('../pix/ok.png');
+}
+
+.wfToolbar {
+	margin-top: 10px;
+	padding: 2px;
+	text-align: right;
+	clear: left;
+}
+
+#wfSelectbar {
+	display: none;
+	position: absolute;
+	width: auto !important;
+	border: 1px dotted #000 !important;
+	background-color: #fff !important;
+	
+	opacity: 0.85;
+	filter: alpha(opacity=85);
+}
+
+.wfToolbarButton {
+	background-color: #F3FFFF;
+	border: 1px dotted #ddd;
+	background-position: center;
+	background-repeat: no-repeat;
+	width: 22px;
+	height: 22px !important;
+	cursor: pointer;
+}
+
+.wfToolbarSeperator {
+	border-right: 1px dotted #ccc;
+	margin: 0px 5px;
+}
+
+.wfSelected {
+	background-color: #DFFAD9 !important;
+}	
+
+.wfSelectedImplicit {
+	background-color: #EAFAE6 !important;
+}
+
+.wfHighlighted,.wfToolbarButton:hover {
+	background-color: #F4FF8F !important;
+	border-color: #aaa;
+}
+
+.wfRemoveHover, .wfIncorrect 
+{
+	background-color: #FCE1E8;
+}
+
+.allincorrect {
+	background-color: #FFF2F6;
+	}
+
+.wfPopup {
+	
+	position: absolute;
+	display: none;
+	border: 1px solid #000;
+	padding: 5px;
+	background-color: #fafafa;
+	
+	opacity: 0.95;
+	filter: alpha(opacity=95);
+}
+
+.wfNumeric {
+	position: relative;
+	top: 2px;
+	height: 20px;
+	border: 1px dotted #ddd;
+	text-align: center;
+}
+
+.wfLabel {
+		position: relative;
+		top: 2px;
+		height: 20px;
+}
+
+.plusminus
+	{
+		display: inline;
+	}
+	
+.plus, .minus
+	{
+		position: relative;
+	
+		background-color: #F3FFFF;
+		height: 10px;
+		width: 10px;
+		border: 1px dotted #ddd;
+		
+		font-size: 8pt;
+		line-height: 9px;
+		
+		cursor: pointer;
+	}
+	
+.plus:hover, .minus:hover
+	{
+		background-color: #F4FF8F !important;
+	}
+	
+.plus
+	{
+		top: -4px;
+		left: -3px;
+	}
+
+.minus
+	{t
+		top: 8px;
+		left: -17px;
+	}
+	
+.bufferRight
+	{
+		width: 50px;
+		height: 30px;
+		float: left;
+	}
+	
+#wfPopupClock
+	{
+		font-size: 8pt;
+		text-align: center;
+	}
+
+#wfPopupClock > .wfLabel
+	{
+		width: 100px;
+	}
