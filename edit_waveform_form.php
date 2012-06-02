@@ -40,7 +40,7 @@ require_once("$CFG->dirroot/question/type/waveform/LogicWaveform.QuickForm.php")
 /**
  * waveform editing form definition.
  */
-class question_edit_waveform_form extends question_edit_form 
+class qtype_waveform_edit_form extends question_edit_form 
 {
 	
     /**
@@ -77,27 +77,13 @@ class question_edit_waveform_form extends question_edit_form
         $mform->addElement('select', 'grademethod', get_string('partialcredit', 'qtype_waveform'), $grademodes);
         $mform->addElement('select', 'autofeedback', get_string('autofeedback', 'qtype_waveform'), $feedbackmodes);
         $mform->addElement('static', 'feedback_warning', '',  get_string('feedback_warning', 'qtype_waveform'));
-        
+
+
+        //add settings for interactive (and similar) modes
+        $this->add_interactive_settings();
     }
 
-
-    function validation($fromform, $files)
-    {
-    		
-    		
-    	
-			$errors = parent::validation($fromform, $files);
-			
-			/*
-			if(!isset($fromform['testbench']))
-				$errors['testbench'] = get_string('notestbench', 'qtype_vhdl');
-			*/
-
-			
-    		return $errors;
-    	
-    }
-    
+   
     function qtype() 
     {
         return 'waveform';

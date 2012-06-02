@@ -33,114 +33,48 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  2009 The Open University
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class qtype_truefalse_renderer extends qtype_renderer {
-    public function formulation_and_controls(question_attempt $qa,
-            question_display_options $options) {
-
+class qtype_waveform_renderer extends qtype_renderer 
+{
+    /**
+     *  Returns the main formulation (question response area) and controls for a Waveform question.
+     */
+    public function formulation_and_controls(question_attempt $qa, question_display_options $options)
+    {
+        //get the question, and the user's last response
         $question = $qa->get_question();
-        $response = $qa->get_last_qt_var('answer', '');
+        $response = $qa->get_last_qt_var('answer', ''); 
 
-        $inputname = $qa->get_qt_field_name('answer');
-        $trueattributes = array(
-            'type' => 'radio',
-            'name' => $inputname,
-            'value' => 1,
-            'id' => $inputname . 'true',
-        );
-        $falseattributes = array(
-            'type' => 'radio',
-            'name' => $inputname,
-            'value' => 0,
-            'id' => $inputname . 'false',
-        );
+        //get the field name that should be used to submit the answer code
+        $field_name = $qa->get_qt_field_name('answer');
 
-        if ($options->readonly) {
-            $trueattributes['disabled'] = 'disabled';
-            $falseattributes['disabled'] = 'disabled';
-        }
+        //get the last (current) step, and the last submitted step
+        $last_step = $qa->get_last_step(); //$qa->get_last_step_with_qt_var('answer');
+        $last_submitted_step = $qa->get_last_step_with_qt_var('-submit');
 
-        // Work out which radio button to select (if any)
-        $truechecked = false;
-        $falsechecked = false;
-        $responsearray = array();
-        if ($response) {
-            $trueattributes['checked'] = 'checked';
-            $truechecked = true;
-            $responsearray = array('answer' => 1);
-        } else if ($response !== '') {
-            $falseattributes['checked'] = 'checked';
-            $falsechecked = true;
-            $responsearray = array('answer' => 1);
-        }
+        //get the decorators for incorrect answers
+        if($last_submitted_step->get_qt_var('answer') == null)
+            $incorrect_decorators = array();
+        else
+            $incorrect_decorators = $question->feedback_from_response(array('answer' => $last_submitted_step->get_qt_var('answer')));
 
-        // Work out visual feedback for answer correctness.
-        $trueclass = '';
-        $falseclass = '';
-        $truefeedbackimg = '';
-        $falsefeedbackimg = '';
-        if ($options->correctness) {
-            if ($truechecked) {
-                $trueclass = ' ' . $this->feedback_class((int) $question->rightanswer);
-                $truefeedbackimg = $this->feedback_image((int) $question->rightanswer);
-            } else if ($falsechecked) {
-                $falseclass = ' ' . $this->feedback_class((int) (!$question->rightanswer));
-                $falsefeedbackimg = $this->feedback_image((int) (!$question->rightanswer));
-            }
-        }
+        //if we have an empty response, assume the default reference question
+        if(empty($response))
+            $wave = $question->get_reference_waveform();
+        //otherwise, use the user's response
+        else
+            $wave = $question->waveform_from_response(array('answer' => $response), $incorrect_decorators);
 
-        $radiotrue = html_writer::empty_tag('input', $trueattributes) .
-                html_writer::tag('label', get_string('true', 'qtype_truefalse'),
-                array('for' => $trueattributes['id']));
-        $radiofalse = html_writer::empty_tag('input', $falseattributes) .
-                html_writer::tag('label', get_string('false', 'qtype_truefalse'),
-                array('for' => $falseattributes['id']));
+        //start a new output buffer containing the question text
+        $output = html_writer::tag('div', $question->format_questiontext($qa), array('class' => 'qtext'));
 
-        $result = '';
-        $result .= html_writer::tag('div', $question->format_questiontext($qa),
-                array('class' => 'qtext'));
+        //output the wave entry control
+        $output .= html_writer::tag('div', $wave->render(true, true, $field_name), array('class' => 'ablock clearfix'));
 
-        $result .= html_writer::start_tag('div', array('class' => 'ablock'));
-        $result .= html_writer::tag('div', get_string('selectone', 'qtype_truefalse'),
-                array('class' => 'prompt'));
+        if($last_submitted_step->get_qt_var('answer') != $last_step->get_qt_var('answer'))
+            $output .= html_writer::tag('div', get_string('mayhavechanged', 'qtype_waveform'), array('class' => 'warning'));
 
-        $result .= html_writer::start_tag('div', array('class' => 'answer'));
-        $result .= html_writer::tag('div', $radiotrue . ' ' . $truefeedbackimg,
-                array('class' => 'r0' . $trueclass));
-        $result .= html_writer::tag('div', $radiofalse . ' ' . $falsefeedbackimg,
-                array('class' => 'r1' . $falseclass));
-        $result .= html_writer::end_tag('div'); // answer
+        //and return the generated output
+        return $output;
 
-        $result .= html_writer::end_tag('div'); // ablock
-
-        if ($qa->get_state() == question_state::$invalid) {
-            $result .= html_writer::nonempty_tag('div',
-                    $question->get_validation_error($responsearray),
-                    array('class' => 'validationerror'));
-        }
-
-        return $result;
-    }
-
-    public function specific_feedback(question_attempt $qa) {
-        $question = $qa->get_question();
-        $response = $qa->get_last_qt_var('answer', '');
-
-        if ($response) {
-            return $question->format_text($question->truefeedback, $question->truefeedbackformat,
-                    $qa, 'question', 'answerfeedback', $question->trueanswerid);
-        } else if ($response !== '') {
-            return $question->format_text($question->falsefeedback, $question->falsefeedbackformat,
-                    $qa, 'question', 'answerfeedback', $question->falseanswerid);
-        }
-    }
-
-    public function correct_response(question_attempt $qa) {
-        $question = $qa->get_question();
-
-        if ($question->rightanswer) {
-            return get_string('correctanswertrue', 'qtype_truefalse');
-        } else {
-            return get_string('correctanswerfalse', 'qtype_truefalse');
-        }
     }
 }
