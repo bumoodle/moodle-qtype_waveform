@@ -37,4 +37,4 @@ $string['generateclock'] = 'Generate Clock:';
 $string['time_high'] = 'Time High:';
 $string['time_low'] = 'Time Low:';
 
-$string['mayhavechanged'] = '<em>Note:</em> Your answer may have changed since this feedback was provided.'
+$string['mayhavechanged'] = '<em>Note:</em> Your answer may have changed since this feedback was provided.';
