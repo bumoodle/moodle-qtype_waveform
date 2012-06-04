@@ -33,7 +33,7 @@ class LogicWaveform
 		
 	}
 
-    function render($can_edit = true, $return = false, $name = '')
+    function render($can_edit = true, $return = false, $name = null)
 	{
 		
 		//establish local variables for template use
@@ -41,7 +41,10 @@ class LogicWaveform
 		$instructor_mode = $this->instructor_mode;
 		$include_path = $this->include_path;
 		$send_scripts = $this->send_scripts;
-		//$name = $this->name;
+
+        //if no name override was provided, use the given name for the form
+        if($name == null)
+            $name = $this->name;
 				
 		//if the return flag is said, buffer the output
 		//instead of sending it in the HTML stream

@@ -98,7 +98,7 @@ class MoodleQuickForm_waveform extends HTML_QuickForm_element
 		}
 		
 		//return the rendered waveform
-		return $this->waveform->render(true, true);
+        return $this->waveform->render(true, true, $this->getName());
 	}
 }
 
