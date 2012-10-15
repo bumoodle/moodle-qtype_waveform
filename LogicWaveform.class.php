@@ -45,7 +45,7 @@ class LogicWaveform
         //if no name override was provided, use the given name for the form
         if($name == null)
             $name = $this->name;
-				
+
 		//if the return flag is said, buffer the output
 		//instead of sending it in the HTML stream
 		if($return)

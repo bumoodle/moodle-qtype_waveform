@@ -790,13 +790,15 @@ function wfMouseMove(e)
 function wfClick(e)
 {
 	hideSelectBar();
-	
+
 	//don't allow changes to fixed blocks
 	if(isFixed($(this)))
 		return;
-	
+
 	if(wfModSelect)
+    {
 		handleSelect($(this));
+    }
 	
 	//if the user has pressed the Unknown button, or is holding the Alt key, force unknown
 	else if(wfModUnknown || e.altKey)
@@ -820,6 +822,8 @@ function wfClick(e)
 	}
 	
 	wfMaintenance($(this));
+    e.stopImmediatePropagation();
+    return false;
 }
 
 /**

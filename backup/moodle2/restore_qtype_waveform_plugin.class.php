@@ -75,17 +75,23 @@ class restore_qtype_waveform_plugin extends restore_qtype_plugin
         $newquestionid   = $this->get_new_parentid('question');
         $questioncreated = $this->get_mappingid('question_created', $oldquestionid) ? true : false;
 
-        // If the question has been created by restore, we need to create its question_boolean too
+        // If the question has been created by restore, we need to create its question_waveform too
         if ($questioncreated)
          {
             // Adjust some columns
             $data->question = $newquestionid;
+
+            /*
+
+            XXX test me out?
 
             // Map sequence of question_answer ids
             $answersarr = explode(',', $data->answers);
             foreach ($answersarr as $key => $answer) 
                 $answersarr[$key] = $this->get_mappingid('question_answer', $answer);
             $data->answers = implode(',', $answersarr);
+
+            */
             
             // Insert record
             $newitemid = $DB->insert_record(self::base_db_name, $data);

@@ -70,8 +70,8 @@ class qtype_waveform_renderer extends qtype_renderer
         //output the wave entry control
         $output .= html_writer::tag('div', $wave->render(true, true, $field_name), array('class' => 'ablock clearfix'));
 
-        if($last_submitted_step->get_qt_var('answer') != $last_step->get_qt_var('answer'))
-            $output .= html_writer::tag('div', get_string('mayhavechanged', 'qtype_waveform'), array('class' => 'warning'));
+        //if($last_submitted_step->get_qt_var('answer') != $last_step->get_qt_var('answer'))
+        //    $output .= html_writer::tag('div', get_string('mayhavechanged', 'qtype_waveform'), array('class' => 'warning'));
 
         //and return the generated output
         return $output;

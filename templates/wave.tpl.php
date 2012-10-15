@@ -2,6 +2,7 @@
 
 //start the individual wave and display its name
 echo '<div class="wavecontainer editable'.($hidden ? ' redundant' : '').'" id="'.$name.'_div" name="'.$name.'_div">';
+echo '<!-- '.$name. '-->';
 
 if($dynamic_edit)
 	echo '<div class="wavename'.($hide_name ? ' redundant' : '').'"><input class="wavename dynamicName" value="'.htmlentities($label).'"></div>';

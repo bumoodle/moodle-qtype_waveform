@@ -200,7 +200,7 @@ class qtype_waveform_question extends question_graded_automatically
       * @param bool $strip_answers  If true, any "answer" segment (which can be specified by the respondant) will be removed.
       * @return LogicWaveform       The reference waveform used to grade this question.
       */
-     public function get_reference_waveform($strip_answers = true)
+     public function get_reference_waveform($strip_answers = true, $element_name = null)
      {
         //TODO: uniqueify waveform beyond id?
  		return LogicWaveform::static_from_dynamic($this->wave, $this->id, true, false, $strip_answers);
