@@ -53,8 +53,10 @@ class qtype_waveform_edit_form extends question_edit_form
     	
     	$mform->addelement('header', 'waveform', get_string('waveform', 'qtype_waveform'));
     	$mform->addElement('waveform', 'wave', '');
+        $mform->setExpanded('waveform');
     	
         $mform->addelement('header', 'gradeoptions', get_string('gradeoptions', 'qtype_waveform'));
+        $mform->setExpanded('gradeoptions');
         
         //$mform->addElement('advcheckbox', 'autofeedback', get_string('autofeedback', 'qtype_waveform'), '&nbsp;&nbsp;'.get_string('autofeedback_detail', 'qtype_waveform'), array("group" => ""), array('0', '1'));
         
@@ -71,7 +73,6 @@ class qtype_waveform_edit_form extends question_edit_form
         	'persegment' => get_string('feedback_persegment', 'qtype_waveform'),
         	'allornothing' => get_string('feedback_allornothing', 'qtype_waveform') 
         );
-        
         
         
         $mform->addElement('select', 'grademethod', get_string('partialcredit', 'qtype_waveform'), $grademodes);

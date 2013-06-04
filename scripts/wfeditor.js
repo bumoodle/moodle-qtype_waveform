@@ -1346,8 +1346,6 @@ function wfInitialize()
 	$('.wavecontainer').each(function() { autoResize($(this), divisionCount()); } );
 	$('.wfQuickform').each(function() { saveWaveset($(this)); })
 	
-	
-
 	//thanks to IE, this should be done twice
 	updateJoints();
 	updateJoints();
