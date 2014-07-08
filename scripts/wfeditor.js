@@ -20,6 +20,8 @@ var wfImplicitSelectStart = null;
 var wfImplicitSelectEnd = null;
 var wfSelectHintEnd = null;
 
+var wfCodeEditTimer = null;
+
 /**
  * Returns true iff the given value has been determined automatically.
  * 
@@ -954,7 +956,14 @@ function selectionStart()
  */
 function saveWaveset(waveset)
 {
-	waveset.children('input').val(serialize_array(serializeWaveset(waveset)));
+    var serialized = serializeWaveset(waveset);
+    var codeBox = waveset.children('textarea');
+    
+	waveset.children('input').val(serialize_array(serialized));
+
+    if(!codeBox.is(':focus')) {
+        codeBox.val(JSON.stringify(serialized));
+    } 
 }
 
 

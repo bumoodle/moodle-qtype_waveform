@@ -54,6 +54,10 @@ class LogicWaveform
 		include 'templates/head.tpl.php';
 			
 		echo $this->out_buffer;
+
+        //Add the waveform object itself.
+        echo '<input id="'.$name.'" type="hidden" name="'.$name.'" id="id_'.$name.'">';
+        echo '<textarea id="'.$name.'_wavecode" class="waveCode"></textarea>';
 		
 		if($this->show_toolbar)
 			include 'templates/toolbar.tpl.php';

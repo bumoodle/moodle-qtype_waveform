@@ -28,6 +28,8 @@
 		<span class="wfToolbarSeperator"></span>
 		<input type="button" class="wfToolbarButton" alt="Add Wave" title="Add Wave" id="btnAddWave">
 		<input type="button" class="wfToolbarButton" alt="Remove Wave" title="Remove Wave" id="modRemoveWave">
+		<span class="wfToolbarSeperator"></span>
+		<input type="button" class="wfToolbarButton" alt="View Raw Code" title="View Raw Code" id="toggleViewCode">
 		
 	<?php 
 		}
