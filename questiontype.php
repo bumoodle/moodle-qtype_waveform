@@ -57,7 +57,7 @@ class qtype_waveform extends question_type
 	/**
 	 * Loads the question type specific options for the question.
 	 */
-	function get_question_options(&$question)
+	function get_question_options($question)
 	{
 		global $DB, $OUTPUT;
 

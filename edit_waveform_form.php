@@ -48,7 +48,7 @@ class qtype_waveform_edit_form extends question_edit_form
      *
      * @param object $mform the form being built.
      */
-    function definition_inner(&$mform) 
+    function definition_inner($mform) 
     {
     	
     	$mform->addelement('header', 'waveform', get_string('waveform', 'qtype_waveform'));
